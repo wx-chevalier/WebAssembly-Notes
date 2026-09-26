@@ -1,6 +1,4 @@
 
-
-
 # Learn WebAssembly
 This repository contains the examples from the book **Learn WebAssembly**, released by [Packt Publishing](https://www.packtpub.com).
 
@@ -22,7 +20,6 @@ Select a chapter link below to navigate to the corresponding README.
 - [Chapter 9: Integrating with Node.js](chapter-09-node/README.md)
 - [Chapter 10: Advanced Tools and Upcoming Features](chapter-10-advanced-tools/README.md)
 
-
 # Learn WebAssembly
 
 <a href="https://www.packtpub.com/web-development/learn-webassembly?utm_source=github&utm_medium=repository&utm_campaign=9781788997379 "><img src="https://d1ldz4te4covpm.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B09984.png" alt="Learn WebAssembly" height="256px" align="right"></a>
@@ -35,27 +32,26 @@ This is the code repository for [Learn WebAssembly](https://www.packtpub.com/web
 WebAssembly is a brand-new technology that represents a paradigm shift in web development. This book aims to teaches programmers how to leverage this technology to write high- performance applications that run in the browser.
 
 This book covers the following exciting features:
-* Learn how WebAssembly came to be and its associated elements (text format, module, and JavaScript API) 
-* Create, load, and debug a WebAssembly module (editor and compiler/toolchain) 
-* Build a high-performance application using C and WebAssembly 
-* Extend WebAssembly’s feature set using Emscripten by porting a game written in C++ 
-* Explore upcoming features of WebAssembly, Node.js integration, and alternative compilation methods 
+- Learn how WebAssembly came to be and its associated elements (text format, module, and JavaScript API)
+- Create, load, and debug a WebAssembly module (editor and compiler/toolchain)
+- Build a high-performance application using C and WebAssembly
+- Extend WebAssembly’s feature set using Emscripten by porting a game written in C++
+- Explore upcoming features of WebAssembly, Node.js integration, and alternative compilation methods
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1788997379) today!
 
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
+<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png"
 alt="https://www.packtpub.com/" border="5" /></a>
 
 ## Instructions and Navigations
 All of the code is organized into folders.
 
 The code will look like the following:
-```
+```wast
 int addTwo(int num) {
  return num + 2;
 }
-```
-
+```wast
 **Following is what you need for this book:**
 If you are a web developer or C/C++ programmer keen to leverage the powerful technology of WebAssembly to build high-performance web applications, then this book is for you.
 
@@ -70,9 +66,9 @@ With the following software and hardware list you can run all code files present
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/9781788997379_ColorImages.pdf).
 
 ### Related products
-*  Angular 6 for Enterprise-Ready Web Applications [[Packt]](https://www.packtpub.com/web-development/angular-6-enterprise-ready-web-applications?utm_source=github&utm_medium=repository&utm_campaign=9781786462909) [[Amazon]](https://www.amazon.com/dp/1786462907)
+-  Angular 6 for Enterprise-Ready Web Applications [[Packt]](https://www.packtpub.com/web-development/angular-6-enterprise-ready-web-applications?utm_source=github&utm_medium=repository&utm_campaign=9781786462909) [[Amazon]](https://www.amazon.com/dp/1786462907)
 
-* Mastering The Faster Web with PHP, MySQL, and JavaScript [[Packt]](https://www.packtpub.com/web-development/mastering-faster-web-php-mysql-and-javascript?utm_source=github&utm_medium=repository&utm_campaign=9781788392211) [[Amazon]](https://www.amazon.com/dp/1788392213)
+- Mastering The Faster Web with PHP, MySQL, and JavaScript [[Packt]](https://www.packtpub.com/web-development/mastering-faster-web-php-mysql-and-javascript?utm_source=github&utm_medium=repository&utm_campaign=9781788392211) [[Amazon]](https://www.amazon.com/dp/1788392213)
 
 ## Get to Know the Author
 **Mike Rourke**
@@ -80,8 +76,6 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ### Suggestions and Feedback
 [Click here](https://docs.google.com/forms/d/e/1FAIpQLSdy7dATC6QmEL81FIUuymZ0Wy9vH1jHkvpY57OiMeKGqib_Ow/viewform) if you have any feedback or suggestions.
-
-
 
 ### Download a free PDF
 

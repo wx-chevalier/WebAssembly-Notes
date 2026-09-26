@@ -6,10 +6,9 @@ The code within these folders represents the examples discussed in Chapter 10.
 ## Notes
 - Unless otherwise specified, all terminal commands should be run from within their example folder (e.g. `/compile-with-llvm`).
 - To remove existing built files, run the following command:
-```
+```wast
 make clean
-```
-
+```wast
 ## Section Instructions
 Each of the links below corresponds with a section of Chapter 10. Click to navigate to the section code.
 
@@ -21,32 +20,27 @@ Describes how to compile C/C++ files using LLVM instead of Emscripten. Ensure yo
 
 ### Installing the webassembly Package
 Run the following command to install `webassembly` globally:
-```
+```wast
 npm install -g webassembly
-```
-
+```wast
 Once complete, ensure the installation was successful by running the following command:
-```
+```wast
 wa
-```
-
+```wast
 ### Compiling the Example
 Run the following command to compile the C++ file using LLVM:
-```
+```wast
 wa compile main.cpp -o main.wasm
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make
-```
-
+```wast
 ### Running the Example
 Run the following command to start the example:
-```
+```wast
 serve -l 8080
-```
-
+```wast
 Navigate to `http://127.0.0.1:8080/index.html` and ensure what you see matches the book.
 
 ## Parallel Wasm with Web Workers
@@ -54,26 +48,22 @@ Example application that uses Web Workers. Ensure you `cd` into `/parallel-wasm`
 
 ### Installing the Dependencies
 Run the following command to install the required dependencies:
-```
+```wast
 npm install
-```
-
+```wast
 ### Building the Application
 Run the following command to build:
-```
-emcc -Os -s WASM=1 -s SIDE_MODULE=1 -s BINARYEN_ASYNC_COMPILATION=0 lib/add.c -o src/calc-add.wasm \ 
+```wast
+emcc -Os -s WASM=1 -s SIDE_MODULE=1 -s BINARYEN_ASYNC_COMPILATION=0 lib/add.c -o src/calc-add.wasm \
 && emcc -Os -s WASM=1 -s SIDE_MODULE=1 -s BINARYEN_ASYNC_COMPILATION=0 lib/subtract.c -o src/calc-subtract.wasm
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make
-```
-
+```wast
 ### Running the Application
 Run the following command to start the application:
-```
+```wast
 serve -l 8080 src
-```
-
+```wast
 Navigate to `http://127.0.0.1:8080/index.html` and ensure what you see matches the book.

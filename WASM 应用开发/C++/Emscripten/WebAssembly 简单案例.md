@@ -14,13 +14,13 @@ void computeNextState()
     int height_limit = height - 1;
     int width_limit = width - 1;
     for (int i = 1; i < height_limit; i++)
-         
+
         {
             i_m1 = (i - 1) * width;
             i_p1 = (i + 1) * width;
             i_ = i * width;
             for (int j = 1; j < width_limit; j++)
-                 
+
                 {
                     j_m1 = j - 1;
                     j_p1 = j + 1;
@@ -33,31 +33,30 @@ void computeNextState()
                     neighbors += current[i_p1 + j];
                     neighbors += current[i_p1 + j_p1];
                     if (neighbors == 3)
-                         
+
                         {
                             next[i_ + j] = 1;
-                             
+
                         }
                     else if (neighbors == 2)
-                         
+
                         {
                             next[i_ + j] = current[i_ + j];
-                             
+
                         }
                     else
-                         
+
                         {
                             next[i_ + j] = 0;
-                             
+
                         }
-                     
+
                 }
-             
+
         }
     memcpy(current, next, width * height);
 }
-```
-
+```wast
 而对应的 JS 版本引擎的实现为：
 
 ```js
@@ -92,8 +91,7 @@ computeNextState() {
   }
   this._current.set(this._next);
 }
-```
-
+```wast
 本部分的编译依旧是直接将 engine.c 编译为 engine.wasm，不过在导入的时候我们需要动态地向 wasm 中注入外部函数：
 
 ```js
@@ -121,6 +119,5 @@ this.module = new EngineWASM({
     },
   },
 });
-```
-
+```wast
 到这里文本告一段落，笔者最后需要声明的是因为这只是随手做的实验，最后的代码包括对于内存的操作可能存在潜在问题，请读者批评指正。

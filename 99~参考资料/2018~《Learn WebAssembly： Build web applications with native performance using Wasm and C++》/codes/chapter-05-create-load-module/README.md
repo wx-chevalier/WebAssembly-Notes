@@ -6,10 +6,9 @@ The purpose of this code is to generate and load WebAssembly modules with and wi
 ## Notes
 - Unless otherwise specified, all terminal commands should be run from within this folder.
 - To remove existing built files, run the following command:
-```
+```wast
 make clean
-```
-
+```wast
 ## Section Instructions
 Each of the links below corresponds with a section of Chapter 5. Click to navigate to the section code.
 
@@ -20,67 +19,56 @@ Each of the links below corresponds with a section of Chapter 5. Click to naviga
 
 ## Compile and Load with Glue
 Run the following command within this folder:
-```
+```wast
 emcc with-glue.c -O3 -s WASM=1 -s USE_SDL=2 -o with-glue.html
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make with-glue
-```
-
+```wast
 Run the following command within this folder:
-```
+```wast
 serve -l 8080
-```
-
+```wast
 Navigate to `http://127.0.0.1:8080/with-glue.html` and compare to book.
 
 ## Custom Loading Code
 Run the following command within this folder:
-```
+```wast
 emcc with-glue.c -O3 -s WASM=1 -s USE_SDL=2 -s MODULARIZE=1 -o custom-loading.js
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make custom-loading
-```
-
+```wast
 Run the following command within this folder:
-```
+```wast
 serve -l 8080
-```
-
+```wast
 Navigate to `http://127.0.0.1:8080/custom-loading.html` and compare to book.
 
 ## Try with Glue
 Run the following command within this folder:
-```
+```wast
 emcc with-glue.c -Os -s WASM=1 -s USE_SDL=2 -s SIDE_MODULE=1 \
 -s BINARYEN_ASYNC_COMPILATION=0 -o try-with-glue.wasm
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make try-with-glue
-```
-
+```wast
 ## Compile and Load Without Glue
 Run the following command within this folder:
-```
+```wast
 emcc without-glue.c -Os -s WASM=1 -s SIDE_MODULE=1 \
 -s BINARYEN_ASYNC_COMPILATION=0 -o without-glue.wasm
-```
-
+```wast
 Alternatively, you can run the following command:
-```
+```wast
 make without-glue
-```
-
+```wast
 Run the following command within the **root** folder:
-```
+```wast
 serve -l 8080
-```
-
+```wast
 Navigate to `http://127.0.0.1:8080/chapter-05-create-load-module/without-glue.html` and compare to book.

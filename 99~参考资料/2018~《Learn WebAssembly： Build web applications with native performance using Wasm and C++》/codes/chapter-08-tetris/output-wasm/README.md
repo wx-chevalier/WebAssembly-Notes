@@ -6,24 +6,20 @@ The code within this folders represents ported codebase reviewed in Chapter 8.
 ## Notes
 - Unless otherwise specified, all terminal commands should be run from within this folder.
 - To remove existing built files, run the following command:
-```
+```wast
 make clean
-```
-
+```wast
 ## Prerequisites
 - Emscripten (emsdk)
 
 ## Compiling the Application
 Run the following command within this folder:
-```
+```wast
 make
-```
-
+```wast
 ## Running the Application
 Run the following command within this folder:
-```
+```wast
 emrun --browser chrome --no_emrun_detect public/index.html
-```
-
+```wast
 If you navigate to `http://localhost:6931/index.html`, you should be able to play the game.
-

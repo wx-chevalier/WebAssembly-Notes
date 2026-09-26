@@ -40,8 +40,7 @@ WASI定义的是一个接口标准，而各个嵌入环境的实现可以选择�
         drop ;; Discard the number of bytes written from the top of the stack
     )
 )
-```
-
+```wast
 这熟悉的感觉，这不就是我们最开始Hello world那一章的例子嘛！在经历了这么多之后，我们再来看这段代码，是不是清晰了很多呢。
 
 没错，这就是一个简单的输出"Hello world\n"的程序嘛。唯一值得注意的，就是`import`中的"wasi_unstable"模块，以及将`$main`函数导出为`_start`这两点。
@@ -60,8 +59,7 @@ WASI定义的是一个接口标准，而各个嵌入环境的实现可以选择�
 
 ```shell
 wasmer run standalone.wasm
-```
-
+```wast
 使用`wasmer`或者`wasmtime`直接运行。
 
 ### 作为库使用
@@ -70,9 +68,9 @@ wasmer run standalone.wasm
 
 我们之前提到，WASI本身只是一个接口，还需要嵌入环境的实现。因此，当我们执行WASI程序时，是需要给出其实现的：
 
-* 当我们在Web上使用WASI程序时，需要使用[WASI polyfill](https://wasi.dev/polyfill/)
-* 当我们使用wasmer引擎运行WASI程序时，需要使用[wasmer-wasi](https://crates.io/crates/wasmer-wasi)
-* 当我们使用wasmtime引擎运行WASI程序时，需要使用[wasmtime-wasi](https://crates.io/crates/wasmtime-wasi)
+- 当我们在Web上使用WASI程序时，需要使用[WASI polyfill](https://wasi.dev/polyfill/)
+- 当我们使用wasmer引擎运行WASI程序时，需要使用[wasmer-wasi](https://crates.io/crates/wasmer-wasi)
+- 当我们使用wasmtime引擎运行WASI程序时，需要使用[wasmtime-wasi](https://crates.io/crates/wasmtime-wasi)
 
 目前来看，我们使用的逻辑就是：
 

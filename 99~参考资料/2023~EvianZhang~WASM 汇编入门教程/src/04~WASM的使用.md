@@ -4,13 +4,13 @@
 
 总的来说，在我们通过WASM引擎使用WASM程序的过程中，WASM标准规范了三个语义阶段：
 
-* 解码（Decoding）
+- 解码（Decoding）
 
   通常来说，WASM是以二进制格式分发的。因此，在使用WASM时，第一步就是将二进制格式的WASM解码成内存中的内部表示。
-* 验证（Validation）
+- 验证（Validation）
 
   WASM本身是一个有类型的编程语言，除此之外也有许多保证正确性的约束。在解码之后，执行之前，WASM引擎会对WASM程序的正确性作验证。
-* 执行（Execution）
+- 执行（Execution）
 
   在验证完正确性之后，WASM引擎会真正执行这个WASM程序。
 
@@ -39,8 +39,7 @@ WASM程序目前最多的用途，就是在Web中使用了。本节就主要介�
     </script>
   </body>
 </html>
-```
-
+```wast
 在这里，我们调用了内置的WebAssembly模块的[`instantiateStreaming`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiateStreaming)函数。这个函数是目前最主要使用的引入WASM程序的接口。同时也从这个的使用方式看出来，当我们需要引入WASM模块时，必须要**手动请求**这个资源，例如使用`fetch`等函数；此外，这个函数是异步的，说明目前引入WASM模块时，也都是异步的请求。
 
 当我们查看这个函数的API文档时，会发现其接收第二个参数`importObject`，这个暂时不细讲，之后讲到WASM函数的导入与导出时再详细解释。
@@ -57,8 +56,7 @@ WASM程序目前最多的用途，就是在Web中使用了。本节就主要介�
 import { add } from "./adder.wasm";
 
 console.log(add(1, 2));
-```
-
+```wast
 如果WASM模块也能以ES Module的形式来导入，这该多好啊！
 
 事实上，这个功能目前还是一个提案[ES Module Integration Proposal for WebAssembly](https://github.com/WebAssembly/esm-integration)，没有被广泛地实现。目前，实现这个功能还有一些阻碍，例如，之前我们提到，对WASM的引入都是异步的，因此如果要全局直接`import`，势必要Top-level Await，而这个也没有很好地实现。
@@ -75,8 +73,7 @@ module.exports = {
   },
   // ...
 };
-```
-
+```wast
 就可以以ES Module的方式引入WASM程序啦！
 
 ## 在通用程序中使用
@@ -106,8 +103,7 @@ fn main() -> Result<()> {
     println!("Sum is {sum}");
     Ok(())
 }
-```
-
+```wast
 下面我们就解释一下这代码中一些主要的语句的含义。
 
 #### 读入程序
@@ -128,8 +124,7 @@ use wasmer_compiler_llvm::LLVM;
 
 let compiler = LLVM::new();
 let mut store = Store::new(compiler);
-```
-
+```wast
 上述代码就是创建了一个，通过LLVM引擎来将WASM的内部表示转译成原生指令的Store。
 
 LLVM引擎生成的原生字节码，目前是优化程度最高的，适合用于生产环境。而`Store::default`默认使用的是用Rust原生开发的，LLVM的平替[cranelift](https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)。这个引擎在转译时间和优化程度之间达到平衡，适用于开发环境。
@@ -174,8 +169,7 @@ fn main() -> Result<()> {
     println!("Sum is {sum}");
     Ok(())
 }
-```
-
+```wast
 上述代码与之前wasmer的代码做了一样的事。
 
 关于上述代码，大部分是与wasmer中的类似，其中，与wasmer的代码最大的不同，是`Store::new`创建时的第二个参数与`Instance::new`创建时的第三个参数。这两个参数实际上对应的是wasmer中的`Imports`，因此在这里暂时不作细讲，之后介绍WASM函数的导入与导出时再详细介绍。

@@ -16,14 +16,14 @@
 
 本系列文章的预备知识包括：
 
-* 高级编程语言
+- 高级编程语言
 
-   * 了解JavaScript及Web开发相关知识
-   * 了解Rust、C开发相关概念及知识
-* 底层汇编
+   - 了解JavaScript及Web开发相关知识
+   - 了解Rust、C开发相关概念及知识
+- 底层汇编
 
-   * 了解LLVM相关概念（可参考我写的[LLVM IR入门指南](https://github.com/Evian-Zhang/llvm-ir-tutorial)）
-   * 了解一门常见的汇编语言，如AMD64架构汇编（可参考我写的[macOS上的汇编入门](https://github.com/Evian-Zhang/Assembly-on-macOS)）或AArch64架构汇编（可参考我写的[在 Apple Silicon Mac 上入门汇编语言](https://github.com/Evian-Zhang/learn-assembly-on-Apple-Silicon-Mac)）
+   - 了解LLVM相关概念（可参考我写的[LLVM IR入门指南](https://github.com/Evian-Zhang/llvm-ir-tutorial)）
+   - 了解一门常见的汇编语言，如AMD64架构汇编（可参考我写的[macOS上的汇编入门](https://github.com/Evian-Zhang/Assembly-on-macOS)）或AArch64架构汇编（可参考我写的[在 Apple Silicon Mac 上入门汇编语言](https://github.com/Evian-Zhang/learn-assembly-on-Apple-Silicon-Mac)）
 
 这些预备知识并不是要求读者掌握的炉火纯青，而是大部分常见的概念要了解，以及一些简单的代码要能够看懂。在绝大部分以概念为主的章节中，我基本上是不会涉及具体的高级语言或者汇编语言的代码的，只有在与代码强相关的章节中，我才会以例子的形式引入相应的代码。
 
@@ -31,25 +31,25 @@
 
 本文的所有代码的测试环境为
 
-* 操作系统
+- 操作系统
 
    Ubuntu 22.04.1
-* CPU
+- CPU
 
    Intel i9-12900K
-* Clang
+- Clang
 
    Homebrew clang version 15.0.7
-* emcc
+- emcc
 
    emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.5
-* Rust
+- Rust
 
    rustc 1.67.0 (fc594f156 2023-01-24)
-* wasmer
+- wasmer
 
    wasmer 3.1.1
-* wabt
+- wabt
 
    1.0.27
 
