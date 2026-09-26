@@ -8,15 +8,15 @@ The purpose of this code is to test your Emscripten installation by compiling a 
 - To remove existing built files, run the following command:
 ```wast
 make clean
-```wast
+```
 ## Instructions
 Run the following command within this folder:
 ```wast
 emcc main.c -Os -s WASM=1 -s SIDE_MODULE=1 \
 -s BINARYEN_ASYNC_COMPILATION=0 -o main.wasm
-```wast
+```
 Alternatively, you can run the following command:
 ```wast
 make
-```wast
+```
 Check for the existence of `main.wasm` within the same folder. If present, the compilation was successful.

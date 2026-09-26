@@ -51,7 +51,7 @@ The code will look like the following:
 int addTwo(int num) {
  return num + 2;
 }
-```wast
+```
 **Following is what you need for this book:**
 If you are a web developer or C/C++ programmer keen to leverage the powerful technology of WebAssembly to build high-performance web applications, then this book is for you.
 

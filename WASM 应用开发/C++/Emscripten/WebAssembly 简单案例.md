@@ -56,7 +56,7 @@ void computeNextState()
         }
     memcpy(current, next, width * height);
 }
-```wast
+```
 而对应的 JS 版本引擎的实现为：
 
 ```js
@@ -91,7 +91,7 @@ computeNextState() {
   }
   this._current.set(this._next);
 }
-```wast
+```
 本部分的编译依旧是直接将 engine.c 编译为 engine.wasm，不过在导入的时候我们需要动态地向 wasm 中注入外部函数：
 
 ```js
@@ -119,5 +119,5 @@ this.module = new EngineWASM({
     },
   },
 });
-```wast
+```
 到这里文本告一段落，笔者最后需要声明的是因为这只是随手做的实验，最后的代码包括对于内存的操作可能存在潜在问题，请读者批评指正。

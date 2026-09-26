@@ -19,15 +19,15 @@ The code within this folders represents the pre-ported (native) codebase reviewe
 1. Run the following command from within this folder to configure CMake:
 ```wast
 cmake ./ -Bbuild
-```wast
+```
 2. Once the CMake configuration is complete, run the following command to build the game:
 ```wast
 cd build && make
-```wast
+```
 3. Run the following command to start the game:
 ```wast
 ./Tetris
-```wast
+```
 ## Ubuntu Instructions
 ### Prerequisites
 - libsdl2-dev
@@ -37,15 +37,15 @@ cd build && make
 1. Run the following command from within this folder to configure CMake:
 ```wast
 cmake ./ -Bbuild
-```wast
+```
 2. Once the CMake configuration is complete, run the following command to build the game:
 ```wast
 cd build && make
-```wast
+```
 3. Run the following command to start the game:
 ```wast
 ./Tetris
-```wast
+```
 ## Windows Instructions
 ### Prerequisites
 - Visual Studio

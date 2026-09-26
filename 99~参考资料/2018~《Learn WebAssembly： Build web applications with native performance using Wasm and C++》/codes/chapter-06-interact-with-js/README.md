@@ -8,7 +8,7 @@ The purpose of this code is to demonstrate how to communicate between JavaScript
 - To remove existing built files, run the following command:
 ```wast
 make clean
-```wast
+```
 ## Section Instructions
 Each of the links below corresponds with a section of Chapter 5. Click to navigate to the section code.
 
@@ -20,15 +20,15 @@ Each of the links below corresponds with a section of Chapter 5. Click to naviga
 Run the following command within this folder:
 ```wast
 emcc js-with-glue.c -O3 -s WASM=1 -s MODULARIZE=1 -o js-with-glue.js
-```wast
+```
 Alternatively, you can run the following command:
 ```wast
 make js-with-glue
-```wast
+```
 Run the following command within this folder:
 ```wast
 serve -l 8080
-```wast
+```
 Navigate to `http://127.0.0.1:8080/js-with-glue.html` and compare to book.
 
 ## Interaction without Glue Code
@@ -36,15 +36,15 @@ Run the following command within this folder:
 ```wast
 emcc js-without-glue.cpp -Os -s WASM=1 -s SIDE_MODULE=1 \
 -s BINARYEN_ASYNC_COMPILATION=0 -o js-without-glue.wasm
-```wast
+```
 Alternatively, you can run the following command:
 ```wast
 make js-without-glue
-```wast
+```
 Run the following command within the **root** folder:
 ```wast
 serve -l 8080
-```wast
+```
 Navigate to `http://127.0.0.1:8080/chapter-06-interact-with-js/js-without-glue.html` and compare to book.
 
 ## Using Source Maps
@@ -54,13 +54,13 @@ emcc chapter-06-interact-with-js/js-without-glue.cpp -O1 -g4 \
 -s WASM=1 -s SIDE_MODULE=1 -s BINARYEN_ASYNC_COMPILATION=0 \
 -o chapter-06-interact-with-js/js-without-glue.wasm \
 --source-map-base http://localhost:8080/chapter-06-interact-with-js/
-```wast
+```
 Alternatively, you can run the following command:
 ```wast
 make try-with-glue
-```wast
+```
 Run the following command within the **root** folder:
 ```wast
 serve -l 8080
-```wast
+```
 Navigate to `http://127.0.0.1:8080/chapter-06-interact-with-js/js-without-glue.html` and compare to book.

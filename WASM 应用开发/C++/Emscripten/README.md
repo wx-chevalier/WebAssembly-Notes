@@ -20,13 +20,13 @@ $ ./emsdk update
 $ ./emsdk install latest
 # 如果出现异常使用 ./emsdk install sdk-1.37.12-64bit
 # https://github.com/kripken/emscripten/issues/5272
-```wast
+```
 安装完毕后激活响应环境即可以进行编译：
 
 ```sh
 $ ./emsdk activate latest
 $ source ./emsdk_env.sh# you can add this line to your .bashrc
-```wast
+```
 到这里基本环境已经配置完毕，我们可以对简单的 counter.c 进行编译，源文件如下：
 
 ```c
@@ -36,14 +36,14 @@ int count() {
   counter += 1;
   return counter;
 }
-```wast
+```
 ```sh
 $ emcc counter.c -s WASM=1 -s SIDE_MODULE=1 -o counter.wasm
 
 # 如果出现以下错误，则是由如下参数
 # WebAssembly Link Error: import object field 'DYNAMICTOP_PTR' is not a Number
 emcc counter.c -O1 -s WASM=1 -s SIDE_MODULE=1 -o counter.wasm
-```wast
+```
 这样我们就得到了 WebAssembly 代码:
 
 ![Some WebAssembly code](https://s3-eu-central-1.amazonaws.com/openbloc-blog/2017/06/Capture-du-2017-06-03-15-47-35.png)
@@ -58,7 +58,7 @@ docker pull 42ua/emsdk
 
 # 执行编译操作
 docker run --rm -v $(pwd):/home/src 42ua/emsdk emcc hello_world.c
-```wast
+```
 对应的 Dockfile 如下所示，我们可以自行修改以适应未来的编译环境：
 
 ```s
@@ -87,12 +87,12 @@ RUN \
 
 # http://docs.docker.com/engine/reference/run/#workdir
 WORKDIR /home/src
-```wast
+```
 编译命令如下所示，如果本地安装好了 emcc 则可以直接使用，否则使用 Docker 环境进行编译：
 
 ```sh
 $ docker run --rm -v $(pwd):/home/src 42ua/emsdk emcc counter.c -s WASM=1 -s SIDE_MODULE=1 -o counter.wasm
-```wast
+```
 ## 编译参数
 
 Emscripten 包含了非常丰富的相关设置参数帮助我们在编译和链接时优化我们的代码。其中部分常用的参数包括：
@@ -129,12 +129,12 @@ int main() {
   printf("Hello World!\n");
   return 0;
 }
-```wast
+```
 使用相关的 GCC 等相关编译器能够很正确得到对应的输出：
 
 ```sh
 > emcc main.c -o hello.html
-```wast
+```
 执行完毕后你将得到三个文件代码，分别是：
 
 - hello.html
@@ -145,7 +145,7 @@ int main() {
 
 ```js
 > emcc main.c
-```wast
+```
 ## 第三方库
 
 在我们的日常的业务开发中相关程序是不可能如此简单的。除了我们自己的操作逻辑外，我们还会依赖于非常多商用或开源的第三方库及框架。比如在数据通信及交换中我们往往会使用到 JSON 这种轻量的数据格式。在 C/C++中有非常多相关的开源库能解决 JSON 解析的问题，例如 cJSON 等，那么接下来我们就增加一点点复杂度，结合 cJSON 库编一个简单的 JSON 解析的程序。
@@ -168,7 +168,7 @@ add_executable(sample main.c)
 
 set_target_properties(sample PROPERTIES LINK_FLAGS "-s EXIT_RUNTIME=1")
 target_link_libraries(sample cjson) # 将第三方库与主程序进行链接
-```wast
+```
 CMakeList.txt 是 CMake 的“配置文件”，CMake 会根据 CMakeLists.txt 的内容帮助我们生成跨平台的编译命令。然后让我们在代码中引入 cJSON 然后并使用它进行 JSON 的解析操作，代码如下：
 
 ```c
@@ -185,7 +185,7 @@ int main() {
     cJSON_Delete(json);
     return 0;
 }
-```wast
+```
 由于我们使用了 CMake，因此 Emscripten 的编译命令需要有一点点修改，我们将不使用 emcc 而是使用 emcmake 及 emmake 来创建我们的相关 WebAssembly 代码，命令如下：
 
 ```sh
@@ -193,7 +193,7 @@ int main() {
 > cd build
 > emcmake cmake ..
 > emmake make
-```wast
+```
 我们创建了一个 build 文件夹用来存放 cmake 相关的生成文件及信息，接着进入 build 文件夹并使用 emcmake 及 emmake 命令生成对应的 WebAssembly 代码 sample.html、sample.js、sample.wasm，最后我们执行访问 sample.html 后可以看到其正确的输出了 JSON 的 data 内容。
 
 # WASM 的调试
@@ -207,12 +207,12 @@ int main() {
     printf("Hello World!");
     return 0;
 }
-```wast
+```
 然后我们使用 emcc 进行编译得到相关的文件：
 
 ```s
 > emcc -g4 main.c -o main.wasm # -g4可生成对应的sourcemap信息
-```wast
+```
 接着打开 Chrome 及其开发者工具，我们就可以看到对应的 main.c 文件并进行单步调试了。但值得注意的是，目前 emcmake 对于 soucemap 的生成支持并不是很好，并且浏览器的单步调试支持也仅仅支持了代码层面的映射关系，对于比较复杂的应用来说目前的单步调试能力还比较不可用，因此建议开发时还是以日志调试为主要手段。
 
 # Links

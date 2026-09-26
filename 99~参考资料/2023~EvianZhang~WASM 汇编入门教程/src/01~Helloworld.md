@@ -18,7 +18,7 @@
     )
     (export "add" (func $add)) ;; Export this function with symbol "add"
 )
-```wast
+```
 这就是我们这一系列学习的核心，WASM汇编。看上去确实花里胡哨，搞JavaScript这种高级语言的看不懂，搞AMD64、AArch64这种汇编语言的看这也感觉奇形怪状。
 
 第一眼看不懂不要紧，之后我们会详细解释每一行每一个语句的意思。这里我们可以通过注释，简单了解到，这实际上是定义了一个名字是`add`的函数，将两个32位有符号整数相加并返回他们的和。
@@ -27,7 +27,7 @@
 
 ```shell
 wat2wasm -o adder.wasm library.wat
-```wast
+```
 这个命令将文本形式的`library.wat`翻译成了二进制形式的`adder.wasm`。
 
 接下来，我们怎么使用这个WASM库呢？
@@ -53,7 +53,7 @@ WASM模块目前最常用的场景，就是在Web上使用。因此，我们可�
     </script>
   </body>
 </html>
-```wast
+```
 我们注意到，需要使用`fetch`来获取这个wasm文件，因此由于浏览器的同源策略，我们不能直接双击打开这个html来看效果。我们可以用一些简易的服务程序，例如[serve](https://github.com/vercel/serve)等，启动后访问相应的url，然后在控制台上，我们可以看到输出了`3`，说明正常运行了。
 
 这里我们看到有很多不同的API。关于具体的如何在Web上与WASM交互，之后的章节会有更详细的说明。
@@ -81,7 +81,7 @@ fn main() -> Result<()> {
     println!("Sum is {sum}");
     Ok(())
 }
-```wast
+```
 编译运行后，会输出"Sum is 3"。由此可见，Rust程序也可以使用WASM提供的函数。
 
 关于Rust等通用程序如何与WASM模块交互，之后也会有章节进行具体说明。
@@ -118,17 +118,17 @@ WASM作为库的使用看上去非常简单，我们需要写的WASM汇编代码
         drop ;; Discard the number of bytes written from the top of the stack
     )
 )
-```wast
+```
 同样地，我们把这个程序翻译成二进制格式：
 
 ```shell
 wat2wasm -o standalone.wasm standalone.wat
-```wast
+```
 如果要执行这个WASM程序，我们需要安装一个WASM运行时，比较常见的包括[wasmer](https://wasmer.io)和[wasmtime](https://wasmtime.dev)。
 
 我们以wasmer为例，使用
 
 ```shell
 wasmer run standalone.wasm
-```wast
+```
 我们可以看到，屏幕上输出了"hello world"，成功了！
